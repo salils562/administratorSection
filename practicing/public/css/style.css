@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    margin-top: 3rem;
+    text-align: center;
+}
+.items{
+    margin: 10px;
+}
+.items input{
+    width: 20rem;
+    height: 2rem;
+}

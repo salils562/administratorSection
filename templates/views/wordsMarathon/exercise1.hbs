@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Words - Exercise 1</title>
+   {{>bootstrap}}
+   <style>
+      /* scroll-bar CSS */
+      ::-webkit-scrollbar {
+         width: 10px;
+         height: 20px;
+      }
+      /* Track */
+      ::-webkit-scrollbar-track {
+         box-shadow: inset 0 0 5px grey;
+         background: #f1f1f1;
+      }
+
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+         background: #555;
+         border-radius: 10px;
+      }
+
+      /* Handle on hover */
+      ::-webkit-scrollbar-thumb:hover {
+         background: green;
+      }
+      * {
+         margin: 0;
+         padding: 0;
+         font-family: 'Baloo Bhai 2', cursive;
+         color: white;
+      }
+
+      body {
+         background-image: radial-gradient(#0A1A60, #0E1337);
+         scroll-behavior: smooth;
+      }
+
+      #insertion {
+         border: 2px solid rgb(255, 255, 255);
+         border-radius: 8px;
+      }
+
+      #insertion label {
+         font-weight: bold;
+      }
+
+      #insertion input {
+         color: black;
+         font-weight: bold;
+         border: 2px solid rgb(255, 255, 255);
+         margin: 10px 0px;
+      }
+
+      #target-word {
+         width: 13rem;
+      }
+
+      #submit {
+         border-radius: 4px;
+         width: 5rem;
+         height: 2rem;
+         background-color: rgb(47, 168, 255);
+      }
+
+      .updation-box {
+         border-radius: 9px;
+         border: 2px solid rgb(255, 255, 255);
+         margin-top: 3rem;
+         margin-bottom: 3rem;
+         padding: 20px;
+      }
+
+      .updation-deletion {
+         border-radius: 8px;
+         padding: 20px;
+         margin-top: 10px;
+         margin-bottom: 5rem;
+      }
+
+      .update-items input {
+         color: black;
+         font-weight: bold;
+         padding: 0px 10px;
+         margin: 10px 5px;
+         height: 2.7rem;
+      }
+
+      #updatequestion {
+         width: 80%;
+      }
+
+      #updatetarget {
+         width: 30%;
+      }
+
+      .question-item {
+         margin: 5px;
+         border: 2px solid rgb(70, 241, 18);
+         padding: 15px;
+         border-radius: 5px;
+         overflow: auto;
+      }
+
+      .question-item button {
+         margin-left: 10px;
+      }
+
+      .question-item-ans {
+         font-weight: bold;
+      }
+
+      #_id {
+         background-color: grey;
+         display: inline-block;
+         padding: 5px;
+         border-radius: 3px;
+      }
+
+      .my-alert {
+         display: none;
+      }
+
+   </style>
+</head>
+
+<body>
+   <div class="container my-3">
+      <h1>Exercise 1 of Words marathon</h1>
+   </div>
+   <div class="container mt-3 p-3" id="insertion">
+      <h1 class="text-center">Fill the data for Insertion</h1>
+      <form action="/word-exer1" method="POST">
+         <div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label">Enter Question</label>
+            <input type="text" name="question" class="form-control" id="question" placeholder="Enter Question"
+               required="true" autocomplete="off">
+            <input type="text" name="targetword" class="form-control" id="target-word" placeholder="Enter targeted word"
+               required="true" autocomplete="off">
+         </div>
+         <div class="mb-3">
+            <label for="formGroupExampleInput2" class="form-label">Enter Options</label>
+            <input type="text" name="option1" class="form-control" autocomplete="off" id="option-1"
+               placeholder="Option 1" required="true">
+            <input type="text" name="option2" class="form-control" autocomplete="off" id="option-2"
+               placeholder="Option 2" required="true">
+            <input type="text" name="option3" class="form-control" autocomplete="off" id="option-3"
+               placeholder="Option 3" required="true">
+         </div>
+         <div class="mb-3">
+            <label for="formGroupExampleInput2" class="form-label">Enter Answer</label>
+            <input type="text" name="answer" class="form-control" id="answer" placeholder="Enter Answer" required="true"
+               autocomplete="off">
+         </div>
+         <div class="mb-3">
+            <input type="submit" id="submit">
+         </div>
+      </form>
+   </div>
+   <div class="updation-box container" id="updation-box">
+      <h1 class="text-center">Updation And Deletion Section</h1>
+      <div class="my-alert">
+         <div class="alert alert-success alert-dismissible fade" id='alertMsg' role="alert">
+            <strong><span id="set-alert-mode"
+                  style="font-weight:bold; margin-right:8px; text-transform: capitalize; color:black;"></span></strong><span
+               id="set-alert-msg" style="color:black;"></span>
+         </div>
+      </div>
+      <p id="_id"></p>
+      <form>
+         <div class="update-items">
+            <span>Question: </span><input type="text" id="updatequestion" placeholder="Question will be seleted here">
+         </div>
+         <div class="update-items">
+            <span>Answer: </span><input type="text" id="updateanswer" placeholder="Answer will be selected here">
+         </div>
+         <div class="update-items">
+            <span>Targeted-Word: </span><input type="text" id="updatetarget"
+               placeholder="Targeted word will be selected here">
+         </div>
+         <div class="update-items">
+            <div class="updateoptions">
+               <span>Options: </span>
+               <input type="text" class="update-options-input" placeholder="option1">
+               <input type="text" class="update-options-input" placeholder="option2">
+               <input type="text" class="update-options-input" placeholder="option3">
+            </div>
+         </div>
+         <div class="update-items mt-2">
+            <button class="btn btn-primary mx-3" id="final-update" disabled="true">Update now</button>
+            <button class="btn btn-primary" id="clear-update">Clear</button>
+         </div>
+      </form>
+   </div>
+   <div>
+      <h3 class="text-center mt-3">Questions</h3>
+   </div>
+   <div class="updation-deletion container d-flex flex-wrap" id="updation-deletion"></div>
+   </div>
+</body>
+<script src="javaScript/wordsMarathon/exer1.js"></script>
+{{>bootstrapJs}}
+
+</html>

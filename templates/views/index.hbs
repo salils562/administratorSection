@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{>bootstrap}}
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: 'Baloo Bhai 2', cursive;
+        }
+        body{
+            background: url(images/pattern.jpg);
+        }
+        #aad{
+         border-radius: 50%;
+        }
+        #main-cont {
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            flex-wrap: wrap;
+        }
+        .items{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .cards{
+            color: white;
+            background-color: blue;
+            padding-top: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            width: 8.5rem;
+            height: 6rem;
+            margin: 1rem auto;
+            cursor: pointer;
+        }
+        span{
+            display: block;
+        }
+        .cards:hover{
+            color: black;
+            font-weight: bold;
+            background-color: rgba(47, 255, 85, 0.653);
+        }
+        .cards a{
+            text-decoration: none;
+            color: white;
+        }
+        @media only screen and (max-width: 500px){
+            .cards{
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+    <title>Home</title>
+</head>
+
+<body>
+    <div class="container text-center mt-3 bg-dark p-3" id="aad">
+        <h2 class="text-capitalize text-light">welcome to the administrator page</h2>
+    </div>
+    <div class="container bg-warning mt-5" id="main-cont">
+        <div class="items">
+        <div class="cards">
+            <span>Tenses</span>
+            <i class="fa-solid fa-chevron-right"></i>
+        </div>
+        <div class="cards">
+            <span>Parts of speech</span>
+            <i class="fa-solid fa-chevron-right"></i>
+        </div>
+        <div class="cards">
+            <span>Pro-noun</span>
+            <i class="fa-solid fa-chevron-right"></i>
+        </div>
+        </div>
+        <div class="items">
+        <div class="cards">
+            <span>Verb</span>
+            <i class="fa-solid fa-chevron-right"></i>
+        </div>
+        <div class="cards">
+            <span>Ad-verb</span>
+            <i class="fa-solid fa-chevron-right"></i>
+        </div>
+        <div class="cards">
+            <span><a href="word-exer1">Words marathon</a></span>
+            <i class="fa-solid fa-chevron-right"></i>
+        </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+</html>
